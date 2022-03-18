@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.shortcuts import render
+
+def homePage(request):
+    the_page = render(request, 'main/index.html', {})
+    return the_page
 
 urlpatterns = [
+    path('', homePage),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
 ]
